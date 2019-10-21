@@ -104,6 +104,10 @@ Vim command which opens a diff window in multi-columns mode.
 
 Vim command which opens a diff window in single-column mode.
 
+### `g:committia_resize_status_window` (default: `'1'`)
+
+If the value is `'0'`, committia.vim will not resize the status window.
+
 ## Future
 
 - Cooperate with [vim-fugitive](https://github.com/tpope/vim-fugitive).
