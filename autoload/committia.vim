@@ -7,6 +7,7 @@ let g:committia_diff_window_opencmd = get(g:, 'committia_diff_window_opencmd', '
 let g:committia_status_window_opencmd = get(g:, 'committia_status_window_opencmd', 'belowright split')
 let g:committia_singlecolumn_diff_window_opencmd = get(g:, 'committia_singlecolumn_diff_window_opencmd', 'belowright split')
 let g:committia_hooks = get(g:, 'committia_hooks', {})
+let g:committia_resize_status_window = get(g:, 'committia_resize_status_window', '1')
 
 inoremap <silent> <Plug>(committia-scroll-diff-down-half) <C-o>:call committia#scroll_window('diff', 'C-d')<CR>
 inoremap <silent> <Plug>(committia-scroll-diff-up-half) <C-o>:call committia#scroll_window('diff', 'C-u')<CR>
@@ -54,7 +55,7 @@ endfunction
 function! s:open_status_window(vcs, info) abort
     call s:open_window(a:vcs, 'status', a:info, 'gitcommit')
     let status_winheight = winheight(a:info.status_bufnr)
-    if line('$') < winheight(a:info.status_bufnr)
+    if line('$') < winheight(a:info.status_bufnr) && g:committia_resize_status_window
         execute 'resize' line('$')
     endif
     return 1
